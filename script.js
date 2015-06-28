@@ -7,8 +7,8 @@ app.controller('myCtrl', function($scope) {
         $(event.target).bind('change keyup input', function(event) {
             $(event.target)[0].style.height='auto';
             if ($(event.target)[0].clientHeight < $(event.target)[0].scrollHeight) {
-					$(event.target)[0].style.height=$(event.target)[0].scrollHeight + 'px';
-				}
+                    $(event.target)[0].style.height=$(event.target)[0].scrollHeight + 'px';
+            }
         });
     };
 
