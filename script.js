@@ -18,3 +18,28 @@ app.controller('myCtrl', function($scope) {
     };
 
 });
+
+app.directive('textareaResize', function() {
+
+    return function(scope, elm, attr) {
+        var raw = elm[0];
+        
+        elm.bind('focus', function() {
+            raw.style.height=raw.scrollHeight + 'px';
+            elm.bind('change keyup input', function() {
+                raw.style.height='auto';
+                if (raw.clientHeight <raw.scrollHeight) {
+                        raw.style.height=raw.scrollHeight + 'px';
+                }
+            });
+        });
+        
+        scope.$on(
+            '$destroy',
+            function handleDestroyEvent() {
+                elm.unbind('focus');
+            }
+        );
+    };
+});
+
